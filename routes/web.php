@@ -17,7 +17,7 @@ use Illuminate\Http\Request;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/article/cetak_pdf', [ArticleController::class,'cetak_pdf']);
 Route::resource('articles', ArticleController::class);
 // Route::resource('mahasiswa', MahasiswaController::class);
 // Route::get('/search', [SearchController::class, 'search'])->name('search');
