@@ -47,4 +47,7 @@
         </table>
     </div>
 </div>
+<div class="d-flex justify-content-center my-5">
+    <a href="{{url('/mahasiswa/cetak_pdf/'.$daftar->mahasiswa->id_mahasiswa)}}" class="btn btn-primary">Export to PDF</a>
+</div>
 @endsection

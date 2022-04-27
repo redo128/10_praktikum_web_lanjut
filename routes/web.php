@@ -25,3 +25,4 @@ Route::get('/search', [SearchController::class, 'search'])->name('search');
 //     return view('mahasiswa.nilai');
 // });
 Route::get('nilai/{id}', [MahasiswaController::class, 'nilai'])->name('nilai');
+Route::get('/mahasiswa/cetak_pdf/{id}', [MahasiswaController::class, 'cetak_pdf']);
