@@ -48,9 +48,19 @@ class MahasiswaController extends Controller
             'Alamat' => 'required',
             'TanggalLahir' => 'required'
             ]);
-            $mahasiswa = new Mahasiswa;
-            $mahasiswa->Nim = $request->get('Nim');
-            $mahasiswa->Nama = $request->get('Nama');
+          
+        if ($request -> file('Foto_mahasiswa')){
+            $foto = $request->file('Foto_mahasiswa')->store('images', 'public');
+        }
+
+        //fungsi eloquent untuk menambah data
+        // Mahasiswa::create($request->all());
+
+        $mahasiswa = new Mahasiswa();
+        $mahasiswa->nim = $request->get("Nim");
+        $mahasiswa->nama = $request->get("Nama");
+        // $mahasiswa->kelas_id = $mahasiswa->kelas()->associate(Kelas::find($request->get("Kelas")));
+        $mahasiswa->foto = $foto;
             $mahasiswa->Jurusan = $request->get('Jurusan');
             $mahasiswa->Email = $request->get('Email');
             $mahasiswa->Alamat = $request->get('Alamat');
@@ -60,6 +70,7 @@ class MahasiswaController extends Controller
             $kelas=Kelas::find($request->get('Kelas'));
             $mahasiswa->Kelas()->associate($kelas);
             $mahasiswa->TanggalLahir = $request->get('TanggalLahir');
+            $mahasiswa->foto=$foto;
             $mahasiswa->save();
             // //fungsi eloquent untuk menambah data
             // //  Mahasiswa::create($request->all());
@@ -89,16 +100,21 @@ class MahasiswaController extends Controller
             //melakukan validasi data
             $request->validate([
                 'Nim' => 'required',
-                'Nama' => 'required',
+                'Nama' => 'required', 
+                'Foto' => 'required', 
                 'Kelas' => 'required',
                 'Jurusan' => 'required',
                 'Email' => 'required',
                 'Alamat' => 'required',
                 'TanggalLahir' => 'required'
             ]);
+            if ($request -> file('Foto')) {
+                $image_name = $request -> file('Foto') -> store('images', 'public');
+            }
             $mahasiswa = Mahasiswa::with('kelas')->where('nim',$Nim)->first();
             $mahasiswa->Nim = $request->get('Nim');
             $mahasiswa->Nama = $request->get('Nama');
+            $mahasiswa->Foto = $image_name;
             $mahasiswa->Jurusan = $request->get('Jurusan');
             $mahasiswa->Email = $request->get('Email');
             $mahasiswa->Alamat = $request->get('Alamat');

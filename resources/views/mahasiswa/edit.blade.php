@@ -32,6 +32,10 @@
  <input type="text" name="Nama" class="form-control" id="Nama" value="{{ $Mahasiswa->nama }}" aria-describedby="Nama" >
  </div>
  <div class="form-group">
+    <label for="Foto">Foto Mahasiswa</label>
+    <input type="file" name="Foto" class="form-control-file" value="{{ $Mahasiswa->foto }}" accept = 'image/jpeg , image/jpg, image/gif, image/png' id="Foto">
+ </div>
+ <div class="form-group">
  <label for="Kelas">Kelas</label>
  <select class="form-control" name="Kelas" id="Kelas" ariadescribedby="password" >
      @foreach($kelas as $kls)

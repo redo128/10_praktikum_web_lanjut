@@ -19,9 +19,9 @@ use Illuminate\Http\Request;
 */
 Route::get('/article/cetak_pdf', [ArticleController::class,'cetak_pdf']);
 Route::resource('articles', ArticleController::class);
-// Route::resource('mahasiswa', MahasiswaController::class);
-// Route::get('/search', [SearchController::class, 'search'])->name('search');
-// // Route::get('/nilai/{$nim}', function () {
-// //     return view('mahasiswa.nilai');
-// // });
-// Route::get('nilai/{id}', [MahasiswaController::class, 'nilai'])->name('nilai');
+Route::resource('mahasiswa', MahasiswaController::class);
+Route::get('/search', [SearchController::class, 'search'])->name('search');
+// Route::get('/nilai/{$nim}', function () {
+//     return view('mahasiswa.nilai');
+// });
+Route::get('nilai/{id}', [MahasiswaController::class, 'nilai'])->name('nilai');
